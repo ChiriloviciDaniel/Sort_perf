@@ -21,9 +21,6 @@ public class sort_perf {
 	private JButton btnNewButton_2;
 	private JButton btnNewButton_3;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -37,9 +34,6 @@ public class sort_perf {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public sort_perf() {
 		initialize();
 	}
@@ -65,30 +59,39 @@ public class sort_perf {
 	public void shellSort(int[] sequence) {
 
 		int increment = sequence.length / 2;
-		while (increment > 0) {
-			for (int i = increment; i < sequence.length; i++) {
+		while (increment > 0) 
+		{
+			for (int i = increment; i < sequence.length; i++) 
+			{
 				int j = i;
 				int temp = sequence[i];
-				while (j >= increment && sequence[j - increment] > temp) {
+				while (j >= increment && sequence[j - increment] > temp) 
+				{
 					sequence[j] = sequence[j - increment];
 					j = j - increment;
 
 				}
 				sequence[j] = temp;
 			}
+
 			if (increment == 2)
 				increment = 1;
 			else
-				increment *= (5.0 / 11);
+				increment *= (1 / 2);
 		}
 	}
 
 	public void bubbleSort(int[] sequence) {
+
 		int n = sequence.length;
 		int temp = 0;
+
 		for (int i = 0; i < n; i++) {
+
 			for (int j = 1; j < (n - i); j++) {
+
 				if (sequence[j - 1] > sequence[j]) {
+
 					temp = sequence[j - 1];
 					sequence[j - 1] = sequence[j];
 					sequence[j] = temp;
@@ -116,15 +119,15 @@ public class sort_perf {
 			if (sequence[j] <= pivot) {
 				i++;
 
-				int swapTemp = sequence[i];
+				int temp = sequence[i];
 				sequence[i] = sequence[j];
-				sequence[j] = swapTemp;
+				sequence[j] = temp;
 			}
 		}
 
-		int swapTemp = sequence[i + 1];
+		int temp = sequence[i + 1];
 		sequence[i + 1] = sequence[end];
-		sequence[end] = swapTemp;
+		sequence[end] = temp;
 		return i + 1;
 	}
 
