@@ -58,15 +58,12 @@ public class sort_perf {
 
 	public void shellSort(int[] sequence) {
 
-		int increment = sequence.length / 2;
-		while (increment > 0) 
-		{
-			for (int i = increment; i < sequence.length; i++) 
-			{
+		int n = sequence.length;
+		for (int increment = n / 2; increment > 0; increment /= 2) {
+			for (int i = increment; i < n; i++) {
 				int j = i;
 				int temp = sequence[i];
-				while (j >= increment && sequence[j - increment] > temp) 
-				{
+				while (j >= increment && sequence[j - increment] > temp) {
 					sequence[j] = sequence[j - increment];
 					j = j - increment;
 
@@ -74,10 +71,6 @@ public class sort_perf {
 				sequence[j] = temp;
 			}
 
-			if (increment == 2)
-				increment = 1;
-			else
-				increment *= (1 / 2);
 		}
 	}
 
@@ -117,11 +110,12 @@ public class sort_perf {
 
 		for (int j = begin; j < end; j++) {
 			if (sequence[j] <= pivot) {
-				i++;
 
+				i++;
 				int temp = sequence[i];
 				sequence[i] = sequence[j];
 				sequence[j] = temp;
+
 			}
 		}
 
